@@ -21,6 +21,7 @@
                     glipGroupId: event.data.groupId
                 });
                 $A.enqueueAction(action);
+                console.log('Saving Glip Group', event.data.groupId)
             }
         }
         window.addEventListener("message", receiveMessage, false);
