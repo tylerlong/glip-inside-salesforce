@@ -1,0 +1,15 @@
+public class AccountGlipController {
+    @AuraEnabled
+    public static Decimal getAccountGlipGroupId(Id accountId) {
+        Account account = [SELECT Glip_Group__c FROM Account WHERE Id=:accountId];
+        return account.Glip_Group__c;
+    }
+    
+    @AuraEnabled
+    public static Decimal setAccountGlipGroupId(Id accountId, Decimal glipGroupId) {
+        Account account = [SELECT Glip_Group__c FROM Account WHERE Id=:accountId];
+        account.Glip_Group__c = glipGroupId;
+        update account;
+        return account.Glip_Group__c;
+    }
+}

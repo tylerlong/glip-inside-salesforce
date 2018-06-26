@@ -1,0 +1,15 @@
+public class OpportunityGlipController {
+    @AuraEnabled
+    public static Decimal getOpportunityGlipGroupId(Id opportunityId) {
+        Opportunity opportunity = [SELECT Glip_Group__c FROM Opportunity WHERE Id=:opportunityId];
+        return opportunity.Glip_Group__c;
+    }
+    
+    @AuraEnabled
+    public static Decimal setOpportunityGlipGroupId(Id opportunityId, Decimal glipGroupId) {
+        Opportunity opportunity = [SELECT Glip_Group__c FROM Opportunity WHERE Id=:opportunityId];
+        opportunity.Glip_Group__c = glipGroupId;
+        update opportunity;
+        return opportunity.Glip_Group__c;
+    }
+}
